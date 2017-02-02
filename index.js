@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const config = require('./config')
 const app = express();
 
+app.use('/node_modules', express.static('node_modules'));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(session({
