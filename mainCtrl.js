@@ -1,4 +1,8 @@
 angular.module('myApp')
-.controller('mainCtrl', function($scope) {
-  
+.controller('mainCtrl', function($scope, productService, cartService) {
+  $scope.products = productService.getProducts();
+
+  $scope.addToCart = function(product) {
+    cartService.addToCart(product.id)
+  }
 })
