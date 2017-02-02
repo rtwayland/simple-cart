@@ -1,5 +1,5 @@
-# angular-boilerplate
-A very basic angular boilerplate
+# Simple Cart
+A very basic angular boilerplate with some products and a cart.
 
 
 ## Installation
