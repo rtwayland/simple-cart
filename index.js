@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const config = require('./config')
+const cartCtrl = require('./cartCtrl');
 const app = express();
 
 app.use('/node_modules', express.static('node_modules'));
@@ -14,20 +15,8 @@ app.use(session({
 }));
 
 
-app.post('/api/cart', (req, res) => {
-
-    if (Array.isArray(req.session.cart)) {
-        req.session.cart.push(req.body);
-    } else {
-        req.session.cart = [req.body];
-    }
-
-    res.status(200).send('ok');
-});
-
-app.get('/api/cart', (req, res) => {
-    res.status(200).json(req.session.cart);
-})
+app.post('/api/cart', cartCtrl.addToCart);
+app.get('/api/cart', cartCtrl.getCart);
 
 
 
